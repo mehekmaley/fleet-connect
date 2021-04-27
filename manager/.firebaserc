@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "teamkalm-29130": {
+      "hosting": {
+        "fleetConnect": [
+          "teamkalm-29130"
+        ]
+      }
+    }
+  }
+}

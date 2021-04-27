@@ -14,6 +14,8 @@ import { MapComponent } from './map/map.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MapComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, 
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
