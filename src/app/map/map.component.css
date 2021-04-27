@@ -1,0 +1,8 @@
+.list-title {
+    border-bottom: 1px solid lightgray;
+    border-top: 1px solid lightgray;
+  }
+  .list-title:hover {
+    border: 1px;
+    background: lightgray;
+  }

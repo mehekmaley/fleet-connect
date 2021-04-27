@@ -1,0 +1,41 @@
+
+<mat-grid-list cols="3" rowHeight="100%" style="width: 100%;">
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <div #map style="width: 100%; height: 100%"></div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <div>
+            <div style="margin: 15px;">
+                <span style="font-family: Roboto;font-size: 60px;line-height:1em;">Driver Name</span>
+            </div>
+            <div>
+                <mat-grid-list cols="2" rowHeight="50px">
+                    <mat-grid-tile class="list-title">Call
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" style="margin-left: 10px;">call</mat-icon>
+                    </mat-grid-tile>    
+                    <mat-grid-tile class="list-title">Message
+                        <mat-icon aria-hidden="false" aria-label="Example home icon" style="margin-left: 10px;">message</mat-icon>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+            
+            <div style="margin-top: 5%;margin-bottom: 5%;">
+                <span style="font-family: Roboto;font-style:oblique;font-size: 35px;line-height:1em;float: left;">KM/hr</span>
+                <span style="font-family: Roboto;font-style:oblique;font-size: 35px;line-height:1em;float: right;">236</span>
+            </div>
+            <div>
+                <br><br><br>
+                <span style="font-family: Roboto;font-size: 25px;line-height:1em;">List of Orders</span>
+                <mat-nav-list>
+                    <mat-list-item>
+                        yoyo
+                    </mat-list-item>
+                    <mat-list-item>
+                        yoyo
+                    </mat-list-item>
+                </mat-nav-list>
+            </div>
+            
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>
