@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable, Subject, Subscriber } from 'rxjs';
+import { AppService } from '../app.service';
 
 declare var H: any;
 
@@ -13,10 +14,12 @@ export class MapComponent implements OnInit {
   private platform: any;
   items = new Observable<any>()
   data = <any>[]
+  route: any
+  map: any
   @ViewChild("map")
   public mapElement!: ElementRef;
 
-  constructor(public firestore: AngularFirestore) {
+  constructor(public firestore: AngularFirestore, public _appService: AppService) {
     this.platform = new H.service.Platform({
       "apikey": "d5hfkR1b0FzgRzxBIbvXY8KyDmqJpM7Uw-ykICXBIYA"
     });
@@ -24,11 +27,41 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadData(); 
+  }
+
+  async loadData() {
+    try{
+      this.route = await this._appService.getRoute().toPromise()
+    }catch(err){
+      console.log("local data: " + err)
+    }
+    console.log(this.route);
+    this.dataProcess()
+  }
+  dataProcess() {
+    console.log(this.route.value[0])
+    
+    var objs = this.route.value[0].polyline.map((x: any[]) => {
+      return { 
+        lat: x[0], 
+        lng: x[1] 
+      }; 
+    })
+    console.log(objs);
+    var lineString = new H.geo.LineString()
+    objs.forEach((element: any) => {
+      lineString.pushPoint(element)
+    });
+
+    this.map.addObject(new H.map.Polyline(
+      lineString, { style: { lineWidth: 4 }}
+    ))
   }
 
   public ngAfterViewInit() {
     let defaultLayers = this.platform.createDefaultLayers();
-    let map = new H.Map(
+    this.map = new H.Map(
         this.mapElement.nativeElement,
         defaultLayers.vector.normal.map,
         {
@@ -47,11 +80,11 @@ export class MapComponent implements OnInit {
       console.log(data)
       var coords = data
       var marker = new H.map.Marker(coords, {icon: icon})
-      map.addObject(marker);
-      map.setCenter(coords);
+      this.map.addObject(marker);
+      this.map.setCenter(coords);
 
     })
-    var ui = H.ui.UI.createDefault(map, defaultLayers);
+    var ui = H.ui.UI.createDefault(this.map, defaultLayers);
 
     // let defaultLayers = this.platform.createDefaultLayers();
     // let map = new H.Map(
