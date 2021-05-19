@@ -26,6 +26,7 @@ export class MapComponent implements OnInit {
   public mapElement!: ElementRef;
 
   constructor(public firestore: AngularFirestore, public _appService: AppService, private domSanitizer: DomSanitizer) {
+    //here map API key
     this.platform = new H.service.Platform({
       "apikey": "d5hfkR1b0FzgRzxBIbvXY8KyDmqJpM7Uw-ykICXBIYA"
     });
@@ -33,7 +34,7 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    //destination of driver for making route
       this.place = this.firestore.collection('Place').doc('Place Name').get()
       this.place.subscribe(data => {
         var place = data.data()["Place name"]
@@ -45,7 +46,7 @@ export class MapComponent implements OnInit {
 
   async loadData(place:any) {
     try{
-      
+      // making route using api call
       this.route = await this._appService.getRoute({"place":place}).toPromise()
     }catch(err){
       console.log("local data: " + err)
