@@ -13,6 +13,7 @@ declare var H: any;
 export class MapComponent implements OnInit {
   private platform: any;
   items = new Observable<any>()
+  place = new Observable<any>()
   data = <any>[]
   drowsy = new Observable<any>()
   drowsyImgs = <any>[]
@@ -32,12 +33,20 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadData(); 
+    
+      this.place = this.firestore.collection('Place').doc('Place Name').get()
+      this.place.subscribe(data => {
+        var place = data.data()["Place name"]
+        console.log(place)
+        this.loadData(place); 
+      })
+    
   }
 
-  async loadData() {
+  async loadData(place:any) {
     try{
-      this.route = await this._appService.getRoute().toPromise()
+      
+      this.route = await this._appService.getRoute({"place":place}).toPromise()
     }catch(err){
       console.log("local data: " + err)
     }
