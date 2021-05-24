@@ -1,4 +1,4 @@
-<mat-drawer-container class="example-container">
+<mat-drawer-container id="desktop" class="example-container">
   <mat-drawer mode="side" opened><img src="../assets/icons/fc_logo.png" width="160" height="100"/>
     <!-- side-list component -->
     <app-side-list></app-side-list>    
@@ -8,3 +8,14 @@
     <app-map></app-map> 
   </mat-drawer-content>
 </mat-drawer-container>
+<!-- <mat-drawer-container id="mobile" class="example-container">
+  <button type="button" style="display: block;" mat-button (click)="drawer.toggle()">
+    Toggle sidenav
+  </button>
+  <mat-drawer #drawer mode="over"><img src="../assets/icons/fc_logo.png" width="160" height="100"/>
+    <app-side-list></app-side-list>    
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-map></app-map> 
+  </mat-drawer-content>
+</mat-drawer-container> -->
