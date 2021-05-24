@@ -21,6 +21,7 @@ export class MapComponent implements OnInit {
   map: any
   count = 0
   marker = undefined
+  breakpoint: any
   driverRoute = new H.geo.LineString()
   @ViewChild("map")
   public mapElement!: ElementRef;
@@ -34,6 +35,7 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.breakpoint = (window.innerWidth <= 400) ? 2 : 3;
     //destination of driver for making route
       this.place = this.firestore.collection('Place').doc('Place Name').get()
       this.place.subscribe(data => {
@@ -42,6 +44,10 @@ export class MapComponent implements OnInit {
         this.loadData(place); 
       })
     
+  }
+
+  onResize(event: any) {
+    this.breakpoint = (event.target.innerWidth <= 400) ? 2 : 3;
   }
 
   async loadData(place:any) {
