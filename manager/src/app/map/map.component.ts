@@ -139,9 +139,7 @@ export class MapComponent implements OnInit {
 
     })
     // var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(this.map));
-    var ui = H.ui.UI.createDefault(this.map, defaultLayers);
-    
+    var ui = H.ui.UI.createDefault(this.map, defaultLayers);  
   }
   
-
 }
