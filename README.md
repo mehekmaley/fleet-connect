@@ -9,7 +9,7 @@ The ‘Last Mile’ refers to the short geographical distance that must be spann
 Public transport doesn’t take us exactly where we need to go, parking is not always available everywhere we go, owning a car or any kind of vehicle is not always possible or even reasonable. 
 40-50% of the total cost of delivery occurs at the last mile. In communication, the last mile is the relatively expensive and complex delivery of cables or wiring from the provider's trunk to one's home.
 
-Finish folder contains driver side application where our ML pothole detection model and Image processing for drowsiness detection works simultaneously.
+Finish folder contains driver side application where our ML pothole detection model using rear camera and Image processing for drowsiness detection using front camera works simultaneously.
 Manager folder contains manager side progressive web application for tracking driver.
 
 
